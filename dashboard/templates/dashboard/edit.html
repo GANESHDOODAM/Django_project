@@ -1,0 +1,16 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h2>Edit Person</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" value="{{ person.name }}" placeholder="Name"><br><br>
+    <input type="email" name="email" value="{{ person.email }}" placeholder="Email"><br><br>
+    <input type="number" name="age" value="{{ person.age }}" placeholder="Age"><br><br>
+    <button type="submit">Save</button>
+</form>
+
+<a href="/dashboard/">Back</a>
+
+{% endblock %}

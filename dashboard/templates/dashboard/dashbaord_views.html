@@ -1,0 +1,21 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+{% for person in details %}
+    <p>
+        {{ person.name }} |
+        {{ person.email }} |
+        {{ person.age }}
+
+        <a href="{% url 'dashboard:edit' person.id %}">Edit</a>
+        <a href="{% url 'dashboard:delete' person.id %}">Delete</a>
+    </p>
+{% empty %}
+    <p>No records found.</p>
+{% endfor %}
+
+<a href="{% url 'home:home_view' %}">Add New</a>
+
+{% endblock %}

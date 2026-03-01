@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def home(request):
-    return HttpResponse("Hello, World! this is from project views , url ` ` ")
+def main_page(request):
+    return render(request, 'project/base.html')
 
 def about(request):
-    return HttpResponse("This is the about page.this is from project views , url `about\` ")
+    return HttpResponse("This is the about page - HOME PAGE - PROJECT FOLDER, url `about\` ")
+

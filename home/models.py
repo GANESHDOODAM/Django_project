@@ -1,6 +1,9 @@
 from django.db import models
 
-# Create your models here.
+class PersonalDetail(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    age = models.IntegerField()
 
-class Post(models.Model):
-    pass
+    def __str__(self):
+        return self.name

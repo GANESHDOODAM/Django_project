@@ -1,17 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .models import PersonalDetail
 
 # Create your views here.
 
-def home(request):
-    return render(request, 'home/home.html')
+def home_view(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        age = request.POST.get("age")
 
+        PersonalDetail.objects.create(
+            name=name,
+            email=email,
+            age=age
+        )
+        return redirect('dashboard:dashboard_view')
+
+    return render(request, "home/home.html")
 
 def home_outside(request):
     return HttpResponse("Welcome to the Home Page! of home app")
 
-def page1(request):
-    return HttpResponse("This is Page 1 of home app")
-
-def page2(request):
-    return HttpResponse("This is Page 2 of home app")
